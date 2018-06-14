@@ -1,4 +1,12 @@
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: '/vue_tpl/'
+  }
+} : {}
+
 module.exports = {
+
+  ...routerBase,
   /*
   ** Headers of the page
   */
