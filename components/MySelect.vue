@@ -55,8 +55,9 @@ export default {
 .V-dropdown
   user-select none
   display inline-block
-  margin 1em
-
+  //margin 1em
+  
+  cursor pointer
   position relative
   ul
     position absolute
@@ -65,12 +66,13 @@ export default {
 
     box-shadow 0 .2em 1.4em 0 rgba(0, 0, 0, 0.2)
   .dropdown-toggle, li
-    padding .7em 1em
+    padding .5em 1em
+    //line-height 1.4
     cursor pointer
   .dropdown-toggle
     padding-right 2em
-    border 1px solid #f1f1f1
-    background aliceblue url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='12'><polygon points='0,0 12,0 6,12' fill='#e91e63'/></svg>") right no-repeat
+    border 1px solid #CCC
+    background url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='12'><polygon points='0,0 12,0 6,12' fill='#e91e63'/></svg>") right no-repeat
   li
     list-style none
     color #477dca

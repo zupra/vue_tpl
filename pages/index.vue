@@ -3,8 +3,8 @@ section
 
   h2 Link
   p Lorem ipsum dolor sit, amet consectetur 
-    a(href = '#') adipisicing 
-    | elit. Voluptate non ab dicta iure quibusdam deserunt assumenda nulla 
+    a(href = '#') adipisicing
+    |  elit. Voluptate non ab dicta iure quibusdam deserunt assumenda nulla 
     a(href = '#') pariatur recusandae fugiat possimus 
     | commodi accusamus numquam, aliquam veniam saepe accusantium nostrum? Pariatur?
 
@@ -17,9 +17,8 @@ section
   h2 Form Styling
 
 
-  h3 selectedOption: {{selectedOption.name}}
-  pre {{selectedOption}}
-  my-select(:options="options", style="width: 210px", @option="OnSelect")
+  
+
 
   form
     .form__item
@@ -32,7 +31,14 @@ section
       input(type='text', placeholder='*Required')
     .form__item
       input(type='text', disabled, placeholder='*disabled')
+    .form__item
+      input.Serch(type='text')
 
+
+
+  my-select(:options="options", @option="OnSelect")
+  h3 selectedOption: {{selectedOption.name}}
+  pre {{selectedOption}}
 
 </template>
 
@@ -130,7 +136,18 @@ select, input
   min-width 300px
 
 select
+  border-radius 0 //mac
+  height 2.4em //(line-height)FF
   cursor: pointer
   appearance: none
   background #fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='12'><polygon points='0,0 12,0 6,12' fill='orange'/></svg>") 100% no-repeat;
+
+
+.Serch
+  padding-left 2.4em  
+  background url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='13' height='13'><g stroke-width='2' stroke='blueviolet'><circle cx='5' cy='5'  r='4' style='fill:none;' /><line x1='9' y1='9' x2='13' y2='13' /></g></svg>") 1em 50% no-repeat
+
+
+
 </style>
+
