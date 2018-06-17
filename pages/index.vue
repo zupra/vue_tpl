@@ -1,44 +1,104 @@
 <template lang="pug">
 section
 
-  h2 Link
+  fieldset
+    legend Button
+
+    button Example
+    each styl in ['btn -gray','btn -red','btn -green','btn -blue']
+      button(class=""+styl) Example
+    button(disabled) disabled
+
+  fieldset
+    legend Input
+    .form
+      select
+        each option in ['red','green','orange','lite','circle']
+          option #{option}
+      input(type='text', value='Read-only value', readonly)
+      input(type='text', placeholder='*Required')
+      input(type='text', disabled, placeholder='*disabled')
+      input.Serch(type='text')
+    hr
+    h2 c-select
+    .form
+      my-select(:options="options", @option="selectedOption = $event")
+    p selectedOption: 
+      b {{selectedOption.name}}
+    pre {{selectedOption}}
+
+  fieldset
+    legend Checkbox, Radio
+    h2 checkbox
+    each _,i in Array(3)
+      label
+        input(type='checkbox', name='checkbox', value=''+(i+1) )
+        | Option #{i+1}
+
+    label
+      input(type='checkbox', name='checkbox', value='4', checked)
+      | Checked
+
+    h2 radio
+    each _,i in Array(3)
+      label
+        input(type='radio', name='radio', value=''+(i+1) )
+        | Option #{i+1}
+    label
+      input(type='radio', name='radio', value='4', checked)
+      | Checked
+
+
+
+
+
+  hr.H1
+  //Text
+  i.tag h1
+  h1 Lorem ipsum dolor sit amet consectetur
+  i.tag h2
+  h2 Lorem ipsum dolor sit amet consectetur
+  i.tag h3 
+  h3 Lorem ipsum dolor sit amet consectetur
+  i.tag p
+  p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis explicabo porro, voluptatum laborum cumque molestiae quibusdam accusamus sed, quam sint ducimus libero distinctio? Dolore laborum, quos dolorem recusandae deleniti quasi.
   p Lorem ipsum dolor sit, amet consectetur 
     a(href = '#') adipisicing
     |  elit. Voluptate non ab dicta iure quibusdam deserunt assumenda nulla 
     a(href = '#') pariatur recusandae fugiat possimus 
     | commodi accusamus numquam, aliquam veniam saepe accusantium nostrum? Pariatur?
 
-  h2 Button
-  button Example
-  each styl in ['btn -gray','btn -red','btn -green','btn -blue']
-    button(class=""+styl) Example
-  button(disabled) disabled
+  i.tag ul.textList
+  ul.textList
+    each item in [1,2,3]
+      li Lorem ipsum dolor sit amet consectetur
+    li Nested lists styled
+      ol
+        li Lorem ipsum dolor sit amet consectetur
+        li Lorem ipsum dolor sit amet consectetur
+        li Lorem ipsum dolor sit amet consectetur
+    li Blanditiis explicabo porro, voluptatum laborum cumque molestiae quibusdam accusamus sed, quam sint ducimus libero distinctio? Dolore laborum, quos dolorem recusandae deleniti quasi.
+  i.tag ol.textList
+  ol.textList
+    li Lorem ipsum dolor sit amet consectetur
+    li Lorem ipsum dolor sit amet consectetur
+    li Nested lists styled
+      ol
+        li Lorem ipsum dolor sit amet consectetur
+        li Lorem ipsum dolor sit amet consectetur
+        li Lorem ipsum dolor sit amet consectetur
+    li Lorem ipsum dolor sit amet consectetur
+    li Nested lists styled
+      ol
+        li Lorem ipsum dolor sit amet consectetur
+        li Lorem ipsum dolor sit amet consectetur
+        li Lorem ipsum dolor sit amet consectetur
+    li Lorem ipsum dolor sit amet consectetur
 
-  h2 Form Styling
-
-
-  
-
-
-  form
-    .form__item
-      select
-        each option in ['red','green','orange','lite','circle']
-          option #{option}
-    .form__item
-      input(type='text', value='Read-only value', readonly)
-    .form__item
-      input(type='text', placeholder='*Required')
-    .form__item
-      input(type='text', disabled, placeholder='*disabled')
-    .form__item
-      input.Serch(type='text')
+  hr.H1
 
 
 
-  my-select(:options="options", @option="OnSelect")
-  h3 selectedOption: {{selectedOption.name}}
-  pre {{selectedOption}}
 
 </template>
 
@@ -81,43 +141,48 @@ $green = #26a69a
 $blue = #4285f4
 $link = #477dca
 
-section, h2
+$border-input =  #CCC //#607d8b
+
+section
   padding: 1em
+  margin auto
+  max-width 1200px
 
 a
   color: $link
+
+
 
 button, input, select, textarea
   outline: 0
   box-shadow: none
   font: inherit
-
-
-
 select, input, button, .btn
+  //!TODO
   line-height: 2.4
-  padding: 0 1em // .7em 1em
+  height 2.4em
+  padding: 0 1em
 
 
 button
   border: 0
   cursor: pointer
-
+  background-color whitesmoke
 button, .btn
+  //border: 1px solid rgba(#BBB, .5)
+  //letter-spacing: 1px
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12)
+  border-radius: .3em
   & + &
     margin-left: 1em
-
 .btn
   display: inline-block
   text-decoration: none
   color: #FFF
-  border-radius: 6px
-  letter-spacing: 1px
   white-space: nowrap
   &.-gray
     color: $link
-    background: #f7f7f7
+    background: snow //#f7f7f7
   &.-red
     background: $red
   &.-green
@@ -125,19 +190,22 @@ button, .btn
   &.-blue
     background: $blue
 
+
+
 //TST
-form
+.form
   display flex
   flex-direction column
+  *
+    width 240px
+
 
 select, input
-  border: 1px solid #CCC
+  border: 1px solid $border-input
   margin-bottom 1em
-  min-width 300px
-
 select
-  border-radius 0 //mac
-  height 2.4em //(line-height)FF
+  border-radius .3em
+  //height 2.4em //(line-height)FF
   cursor: pointer
   appearance: none
   background #fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='12'><polygon points='0,0 12,0 6,12' fill='orange'/></svg>") 100% no-repeat;

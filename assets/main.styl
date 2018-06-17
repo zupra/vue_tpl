@@ -1,0 +1,98 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&subset=cyrillic')
+
+@charset "UTF-8"
+
+@import 'settings'
+@import 'form'
+
+
+*
+  margin 0
+  padding 0
+  box-sizing border-box
+
+:root
+  font 100%/1.6 'Roboto', 'Helvetica Neue', sans-serif
+  color #444
+
+
+//i, b
+i
+  font inherit
+i.tag
+  font-weight normal
+  &:before
+    content '[ '
+  &:after
+    content ' ] '
+  &:before
+  &:after
+    color blue
+
+
+[disabled]
+  background #EEE
+  color #999
+  cursor wait
+  opacity .5
+
+
+
+hr
+  margin 1em 0
+  height: 1px
+  border: none
+  border-top: 1px solid #CCC //rgba(#777, .5)
+  &.H1
+    margin 5em 3em 4em
+    text-align: center
+    overflow: visible
+    border 0
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    &:after
+      content: "§";
+      display: inline-block;
+      position: relative;
+      top: -0.7em;
+      font-size: 1.5em;
+      padding: 0 0.25em;
+      background: white;
+
+h1,h2,h3,h4,h5,p
+  margin 1em 0 .75em
+  //margin 0 0 .75em
+.H1,h1,h2,h3,h4
+  line-height 1.2
+h1,h2
+  color $header
+  font-weight: 400
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+p
+  margin-bottom 1em
+
+ul,ol
+  list-style none
+.textList
+  padding 1em 0 1em 2em
+  //list-style-position inside
+  ol, ul
+    padding-left 1em
+    
+ul.textList li
+  list-style-type: square
+// ol.textList li
+//   list-style-type decimal
+
+ol.textList
+  counter-reset: item;
+  li
+    counter-increment: item;
+    &:before
+      color #AAA
+      content: counters(item, ".") ". ";
+  li li
+    counter-increment: sub;
+    &:before
+      content: counters(item, ".") "." counter(sub) " ";

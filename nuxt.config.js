@@ -21,6 +21,9 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  css: [
+    { src: '~assets/main.styl', lang: 'stylus' }
+  ],
   /*
   ** Customize the progress bar color
   */

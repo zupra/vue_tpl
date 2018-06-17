@@ -1,16 +1,25 @@
 <template>
 
 <div class="V-dropdown">
-  <div class="dropdown-toggle" v-if="!selectedOption" @click="open=!open">Please select an item</div>
-  <div v-else class="dropdown-toggle" @click="open=!open">{{ selectedOption.name }}</div>
+  <div 
+    v-if="!selectedOption" 
+    class="dropdown-toggle" 
+    @click="open=!open">
+      Please select an item
+    </div>
+  <div 
+    v-else class="dropdown-toggle" 
+    @click="open=!open">
+      {{ selectedOption.name }}
+    </div>
   <ul v-show="open">
     <li
       v-for="(option,i) in options"
-      :key="option"
+      :key="i"
       @click="updateOption(option,i)"
-      :class="{selected:i==selectedItem}"
-      >
-      {{ option.name }}</li>
+      :class="{selected:i==selectedItem}">
+        {{ option.name }}
+      </li>
   </ul>
 </div>
 
@@ -53,10 +62,7 @@ export default {
 
 
 .V-dropdown
-  user-select none
-  display inline-block
-  //margin 1em
-  
+  user-select none  
   cursor pointer
   position relative
   ul
@@ -66,17 +72,22 @@ export default {
 
     box-shadow 0 .2em 1.4em 0 rgba(0, 0, 0, 0.2)
   .dropdown-toggle, li
-    padding .5em 1em
-    //line-height 1.4
+    padding 0 1em
+    // H as input
+    line-height: 2.4
+    height 2.4em
+
     cursor pointer
   .dropdown-toggle
+    border-radius .3em
     padding-right 2em
     border 1px solid #CCC
-    background url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='12'><polygon points='0,0 12,0 6,12' fill='#e91e63'/></svg>") right no-repeat
+    background url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='12'><polygon points='0,0 12,0 6,12' fill='orange'/></svg>") right no-repeat
   li
     list-style none
     color #477dca
     border-top 1px solid #EFEFEF
+    white-space nowrap
     &.selected
       color #000
     &:hover
