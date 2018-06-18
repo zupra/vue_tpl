@@ -1,0 +1,85 @@
+ul,ol
+  list-style none
+.textList
+  padding 1em 0 1em 1.4em
+  //list-style-position inside
+  li:before
+    margin-right: .5em
+    color #607d8b //#bed4e3
+  ol, ul
+    padding-left 1em
+
+
+
+numCounter()
+  font-size: .9em
+  content: counters(item, ".") ".";
+ul.textList
+  li:before
+    content: '▪ ' //'●' '■'
+  ul li:before
+    content: '•'
+  ol
+    counter-reset: item
+    li:before
+      counter-increment: item;
+      numCounter()
+ol.textList
+  counter-reset: item;
+  li
+    counter-increment: item;
+    &:before
+      numCounter()
+  ol li
+    counter-increment: sub;
+    &:before
+      content: counter(item) "." counter(sub) ".";
+  ul li:before
+    counter-increment: none
+    content: '▪ ' 
+
+
+
+/* 
+// классный - компактный 
+// НО! хуячит по всем спискам 
+// ???
+// если только .textList > list
+ul
+  li:before
+    content: '▪ ' //'●' '■'
+  ul li:before
+    content: '•'
+ol
+  counter-reset: section
+  li:before
+    font-size: .9em
+    counter-increment: section;
+    content: counters(section,".") ")"
+  ul li:before
+    counter-increment: none
+    content: '▪ ' 
+*/
+
+
+
+
+/*
+// так се G-вариант
+ul.textList
+  list-style-type: square
+  li li
+    list-style-type: disc
+
+ol.textList
+  counter-reset: item;
+  li
+    counter-increment: item;
+    &:before
+      color #AAA
+      content: counters(item, ".") " ";
+  li li
+    counter-increment: sub;
+    &:before
+      content: counters(item, ".") "." counter(sub) " "; 
+*/

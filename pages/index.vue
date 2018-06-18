@@ -1,5 +1,5 @@
 <template lang="pug">
-section
+.Wrap
 
   fieldset
     legend Button
@@ -49,7 +49,9 @@ section
       | Checked
 
 
-
+  fieldset
+    legend Autocomplete
+    my-autocomplete
 
 
   hr.H1
@@ -61,7 +63,7 @@ section
   i.tag h3 
   h3 Lorem ipsum dolor sit amet consectetur
   i.tag p
-  p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis explicabo porro, voluptatum laborum cumque molestiae quibusdam accusamus sed, quam sint ducimus libero distinctio? Dolore laborum, quos dolorem recusandae deleniti quasi.
+  p Lorem ipsum dolor <b>sit amet consectetur</b>, adipisicing elit. Blanditiis explicabo porro, <s>voluptatum laborum</s> cumque molestiae quibusdam accusamus sed, quam sint ducimus libero distinctio? Dolore laborum, quos dolorem recusandae deleniti quasi.
   p Lorem ipsum dolor sit, amet consectetur 
     a(href = '#') adipisicing
     |  elit. Voluptate non ab dicta iure quibusdam deserunt assumenda nulla 
@@ -72,30 +74,81 @@ section
   ul.textList
     each item in [1,2,3]
       li Lorem ipsum dolor sit amet consectetur
-    li Nested lists styled
+    
+    li Nested <b>[OL]</b> ordered list styled
       ol
         li Lorem ipsum dolor sit amet consectetur
-        li Lorem ipsum dolor sit amet consectetur
-        li Lorem ipsum dolor sit amet consectetur
+        li Nested <b>[OL]</b> ordered list styled
+          ol
+            each _,i in Array(3)
+              li Lorem ipsum dolor sit amet consectetur
+                ol
+                  each _,i in Array(3)
+                    li Lorem ipsum dolor sit amet consectetur
+
+        li Nested <b>[OL]</b> ordered list styled
+          ol
+            each _,i in Array(3)
+              li Lorem ipsum dolor sit amet consectetur
+
+    li Nested <b>[UL]</b> unordered list styled
+      ul
+        each _,i in Array(3)
+          li Quam sint ducimus libero distinctio
     li Blanditiis explicabo porro, voluptatum laborum cumque molestiae quibusdam accusamus sed, quam sint ducimus libero distinctio? Dolore laborum, quos dolorem recusandae deleniti quasi.
+
   i.tag ol.textList
   ol.textList
     li Lorem ipsum dolor sit amet consectetur
-    li Lorem ipsum dolor sit amet consectetur
-    li Nested lists styled
+    li Nested <b>[OL]</b> ordered list styled
       ol
-        li Lorem ipsum dolor sit amet consectetur
-        li Lorem ipsum dolor sit amet consectetur
-        li Lorem ipsum dolor sit amet consectetur
+        each _,i in Array(3)
+          li Lorem ipsum dolor sit amet consectetur
     li Lorem ipsum dolor sit amet consectetur
-    li Nested lists styled
+    li Nested <b>[UL]</b> unordered list styled
+      ul
+        each _,i in Array(3)
+          li Lorem ipsum dolor sit amet consectetur
+    li Nested <b>[OL]</b> ordered list styled
       ol
-        li Lorem ipsum dolor sit amet consectetur
-        li Lorem ipsum dolor sit amet consectetur
-        li Lorem ipsum dolor sit amet consectetur
+        each _,i in Array(3)
+          li Lorem ipsum dolor sit amet consectetur
     li Lorem ipsum dolor sit amet consectetur
 
+
+
   hr.H1
+  h1 Модалки <b>!!!TODO</b>
+  each item,i in ['Modal', 'Modal(toCenter)', 'Small Modal', 'Small(toCenter)', 'Large Modal', 'Right Modal']
+    button.btn.-blue(@click="showModal_"+(i+1)+" = true") #{item}
+
+  my-modal(:show.sync="showModal_1", title="Base Modal")
+    p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis explicabo porro, voluptatum laborum cumque molestiae quibusdam accusamus sed, quam sint ducimus libero distinctio? Dolore laborum, quos dolorem recusandae deleniti quasi.
+
+  my-modal(:show.sync="showModal_2", mod="toCenter", title="Lorem ipsum dolor sit amet")
+    p Blanditiis explicabo porro, voluptatum laborum cumque molestiae quibusdam accusamus sed, quam sint ducimus libero distinctio? Dolore laborum, quos dolorem recusandae deleniti quasi.
+    
+    
+  my-modal(:show.sync="showModal_3", mod="SM")
+    p Заголовок не был назначен, поэтому только тело
+    h3 Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+    p Quod dignissimos voluptate iure eius cupiditate rem sed consequuntur itaque odio!
+
+  my-modal(:show.sync="showModal_4", mod="SM toCenter", title="Small modal toCenter")
+    p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod dignissimos voluptate iure eius cupiditate rem sed consequuntur itaque odio. Assumenda dignissimos veritatis placeat nesciunt maiores vel fuga est odio magnam!
+
+  my-modal(:show.sync="showModal_5", mod="XL", title='Окно для  «Широкого» контента')
+    iframe(height='480', scrolling='no', title='Flexbox Overview', src='//codepen.io/dimaZubkov/embed/BZLqGv/?height=480&theme-id=0&default-tab=result&embed-version=2', frameborder='no', allowtransparency='true', allowfullscreen='true', style='width: 100%;')
+
+  my-modal(:show.sync="showModal_6", position="rModal", title="Lorem ipsum dolor")
+    h2 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod dignissimos voluptate iure eius cupiditate rem sed consequuntur itaque odio. Assumenda dignissimos veritatis placeat nesciunt maiores vel fuga est odio magnam!
+    h4 Magnam atque, accusamus deleniti, inventore pariatur voluptates eos officiis quasi officia magni reprehenderit ipsa nam ducimus, temporibus autem sunt odio quae iste.
+
+
+  hr.H1
+
+
 
 
 
@@ -103,119 +156,57 @@ section
 </template>
 
 <script>
-import mySelect from "~/components/MySelect.vue";
+import mySelect from "~/components/MySelect";
+import myModal from "~/components/MyModal";
+
+import MyAutocomplete from "../components/MyAutocomplete";
 
 export default {
   components: {
-    mySelect
+    mySelect,
+    myModal,
+    MyAutocomplete
   },
   data() {
     return {
       selectedOption: {},
       options: [
         {
-          name: 'First Option',
+          name: "First Option",
           val: 1
         },
         {
-          name: 'Second Option',
+          name: "Second Option",
           val: 2
         },
         {
-          name: 'Third Option',
+          name: "Third Option",
           val: 3
         },
         {
-          name: 'Lorem ipsum',
+          name: "Lorem ipsum",
           val: 4
         }
-      ]
-    }
+      ],
+
+      showModal_1: false,
+      showModal_2: false,
+      showModal_3: false,
+      showModal_4: false,
+      showModal_5: false,
+      showModal_6: false
+    };
   }
 };
 </script>
 
 <style lang="stylus">
-$red = #ed5565 // #f05f5c
-$green = #26a69a
-$blue = #4285f4
-$link = #477dca
+@import '../assets/settings';
 
-$border-input =  #CCC //#607d8b
-
-section
-  padding: 1em
-  margin auto
-  max-width 1200px
-
-a
-  color: $link
-
-
-
-button, input, select, textarea
-  outline: 0
-  box-shadow: none
-  font: inherit
-select, input, button, .btn
-  //!TODO
-  line-height: 2.4
-  height 2.4em
-  padding: 0 1em
-
-
-button
-  border: 0
-  cursor: pointer
-  background-color whitesmoke
-button, .btn
-  //border: 1px solid rgba(#BBB, .5)
-  //letter-spacing: 1px
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12)
-  border-radius: .3em
-  & + &
-    margin-left: 1em
-.btn
-  display: inline-block
-  text-decoration: none
-  color: #FFF
-  white-space: nowrap
-  &.-gray
-    color: $link
-    background: snow //#f7f7f7
-  &.-red
-    background: $red
-  &.-green
-    background: $green
-  &.-blue
-    background: $blue
-
-
-
-//TST
-.form
-  display flex
-  flex-direction column
-  *
-    width 240px
-
-
-select, input
-  border: 1px solid $border-input
-  margin-bottom 1em
-select
-  border-radius .3em
-  //height 2.4em //(line-height)FF
-  cursor: pointer
-  appearance: none
-  background #fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='12'><polygon points='0,0 12,0 6,12' fill='orange'/></svg>") 100% no-repeat;
-
-
-.Serch
-  padding-left 2.4em  
-  background url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='13' height='13'><g stroke-width='2' stroke='blueviolet'><circle cx='5' cy='5'  r='4' style='fill:none;' /><line x1='9' y1='9' x2='13' y2='13' /></g></svg>") 1em 50% no-repeat
-
-
-
+.Wrap {
+  padding: 1em;
+  margin: auto;
+  max-width: 1200px;
+}
 </style>
 

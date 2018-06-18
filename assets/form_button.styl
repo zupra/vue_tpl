@@ -1,0 +1,26 @@
+button
+  border: 0
+  background-color whitesmoke
+button, .btn
+  //border: 1px solid rgba(#BBB, .5)
+  //letter-spacing: 1px
+  
+  cursor: pointer
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12)
+  border-radius: .3em
+  & + &
+    margin-left: 1em
+.btn
+  display: inline-block
+  text-decoration: none
+  color: #FFF
+  white-space: nowrap
+  &.-gray
+    color: $link
+    background: snow //#f7f7f7
+  &.-red
+    background: $red
+  &.-green
+    background: $green
+  &.-blue
+    background: $blue
