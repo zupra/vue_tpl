@@ -11,7 +11,7 @@
 
   fieldset
     legend Input
-    .form
+    .form-group
       select
         each option in ['red','green','orange','lite','circle']
           option #{option}
@@ -56,7 +56,8 @@
 
   hr.H1
   //Text
-  i.tag h1
+  samp
+    i.tag h1
   h1 Lorem ipsum dolor sit amet consectetur
   i.tag h2
   h2 Lorem ipsum dolor sit amet consectetur

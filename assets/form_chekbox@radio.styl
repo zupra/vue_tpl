@@ -1,19 +1,23 @@
+/* 
+  outline 0
+  ...ETC ./form
+ */
+
 //$blue = #4285f4
 $clr = #2196f3;
 $size = 20px
 
 input[type=checkbox],
 input[type=radio]
-  cursor pointer
-  padding 0 //reset base input
-  //outline 0
   appearance: none;
+  padding 0 //reset base input
+  cursor pointer
 
   height: $size
   width: $size
   
   border: 2px solid $clr
-  vertical-align: text-top
+  vertical-align: sub //text-top
   margin: 0 .5em
   &:checked
     background $clr
@@ -28,12 +32,8 @@ input[type=radio]
   &:checked
     background-image url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='4' fill='white'/></svg>")
 
-@keyframes bounce {
-  0%,
-  100% {
+@keyframes bounce
+  0%,100%
     transform: scale(1);
-  }
-  50% {
+  50%
     transform: scale(0.7);
-  }
-}
