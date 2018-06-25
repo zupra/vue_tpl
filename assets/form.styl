@@ -1,52 +1,166 @@
-//TST
+//========== helperS/molecules ===============
+[disabled]
+  background #EEE
+  color #999
+  cursor wait !important
+  opacity .5
+
+
+
 .form-group
   display flex
   flex-direction column
-  *
+  //!FIXME
+  >*
     width 240px
+    margin-bottom 1em
+    
+
+.checked-group
+  label
+    display block
+
+ // !TODO
+.form-line
+  margin -.3em
+  &+&
+    margin-top .7em
+  .btn, button, input, select
+    margin .35em
+  label
+    white-space: nowrap
+    padding-right .7em
 
 
-//
 
+//========== BASE form_EL ===============
+
+//helper-el
 fieldset
-  border 1px solid #CCC
+  border 1px solid #EEE
   padding 1em 1.4em 1.4em
   margin 1em 0
 legend
   padding 0 .3em
-
 label
   user-select none
   cursor pointer
 
+//FF fix
+button::-moz-focus-inner
+  border: 0
+select:not([multiple]):-moz-focusring
+  color: transparent;
+  text-shadow: 0 0 0 #000;
 
-//BASE
+
+
+//BASE_el
 button, input, select, textarea
   outline: 0
-  box-shadow: none
+  box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
   font: inherit
 
-//BASE height
-select, input, button, .btn
-  line-height: 2.4
-  height 2.4em
-  padding: 0 1em
-
-
-select, input
-  border: 1px solid $border-input
-  margin-bottom 1em
-select
+$base_form_el_size()
+  line-height 1.2
+  padding .6em 1em
+.select, select:not([multiple]), input, textarea, .btn, button
+  $base_form_el_size()
   border-radius .3em
-  //height 2.4em //(line-height)FF
+
+
+// Input_el
+.select, select, input, textarea
+  border: 1px solid $border-input
+  &:focus
+    border-radius: 0
+    border-top-color: $link 
+
+
+$select()
+  //border-radius .3em
   cursor: pointer
-  appearance: none
   background #fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='12'><polygon points='0,0 12,0 6,12' fill='orange'/></svg>") 100% no-repeat;
+  padding-right 2em //for icon
+
+select:not([multiple])
+  appearance: none
+select:not([multiple]), .select
+  $select()
+select[multiple]
+  cursor: pointer
+  padding .2em
+  option
+    padding .2em
+    padding-left .8em
+    &:first-child
+      background #EFEFEF
+
 
 .Serch
   padding-left 2.4em  
   background url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='13' height='13'><g stroke-width='2' stroke='blueviolet'><circle cx='5' cy='5'  r='4' style='fill:none;' /><line x1='9' y1='9' x2='13' y2='13' /></g></svg>") 1em 50% no-repeat
 
 
-@import 'form_button'
+
+
+//@import 'form_button'
+//https://bulma.io/documentation/elements/button/#button-group
+// [type="reset"]
+// [type="submit"]
+button
+  border 0
+.btn
+  display: inline-block
+  text-decoration: none  
+button
+.btn
+  //border-radius: .3em
+  //border: 2px solid transparent
+  
+  cursor: pointer
+  white-space: nowrap
+  
+  background: $blue
+  color: #FFF
+
+  box-shadow: 0 2px 5px 0 rgba(#000, .2), 0 1px 10px 2px rgba(#444, .2)
+  //box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+  
+  transition: background-color 0.3s
+  &:not([disabled]):active
+    transform: translateY(2px)
+  &:not([disabled]):hover
+      background $blue - 10%
+  
+  //states
+  &.red
+    background: $red
+    &:not([disabled]):hover
+      background $red - 20//10%
+  &.green
+    background: $green
+    &:not([disabled]):hover
+      background $green - 20
+  &.orange
+    background $orange
+    &:not([disabled]):hover
+      background #eea236 - 20
+  
+  //mod
+  //&.outline, 
+  &.lite
+    color: $link
+    background: snow
+    &:hover
+      background: snow //#f7f7f7
+    //border-color: $header
+    //border: 2px solid $header
+    &:hover
+      background rgba(#CCC, .2)
+      color #222
+
+
+
+
 @import 'form_chekbox@radio'

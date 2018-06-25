@@ -3,33 +3,22 @@
 
   fieldset
     legend Button
+    .form-line
+      button base button
+      button(disabled) button disabled
+    .Tag states/mod
+    .form-line
+      each styl in ['btn lite','btn red','btn green','btn orange','btn']
+        div(class=""+styl) .btn Example
+    .Tag disabled
+    .form-line
+      each styl in ['btn lite','btn red','btn green','btn orange','btn']
+        div(class=""+styl, disabled) .btn disabled
 
-    button Example
-    each styl in ['btn -gray','btn -red','btn -green','btn -blue']
-      button(class=""+styl) Example
-    button(disabled) disabled
-
-  fieldset
-    legend Input
-    .form-group
-      select
-        each option in ['red','green','orange','lite','circle']
-          option #{option}
-      input(type='text', value='Read-only value', readonly)
-      input(type='text', placeholder='*Required')
-      input(type='text', disabled, placeholder='*disabled')
-      input.Serch(type='text')
-    hr
-    h2 c-select
-    .form
-      my-select(:options="options", @option="selectedOption = $event")
-    p selectedOption: 
-      b {{selectedOption.name}}
-    pre {{selectedOption}}
 
   fieldset
     legend Checkbox, Radio
-    h2 checkbox
+    .Tag checkbox
     each _,i in Array(3)
       label
         input(type='checkbox', name='checkbox', value=''+(i+1) )
@@ -39,7 +28,7 @@
       input(type='checkbox', name='checkbox', value='4', checked)
       | Checked
 
-    h2 radio
+    .Tag radio
     each _,i in Array(3)
       label
         input(type='radio', name='radio', value=''+(i+1) )
@@ -49,6 +38,88 @@
       | Checked
 
 
+
+  fieldset
+    legend Input EL
+    .form-line
+      select
+        each option in ['red','green','orange','lite','circle']
+          option #{option}     
+      input(value='Read-only value', readonly)
+      input(placeholder='*Required')
+      input(disabled, placeholder='*disabled')
+
+    .Tag c-select
+    my-select(:options="options", @option="selectedOption = $event")
+    p selectedOption: 
+      b {{selectedOption.name}}
+    pre {{selectedOption}}
+
+
+  fieldset
+    legend form-group
+    .flex-row
+      .form-group
+        input.Serch(type='text')
+        select(multiple)
+          each option in ['red','green','orange','lite','circle']
+            option #{option}
+        select
+          each option in ['red','green','orange','lite','circle']
+            option #{option}
+        textarea
+        input(placeholder='*Required')
+        input(disabled, placeholder='*disabled')
+        .checked-group
+          each _,i in Array(3)
+            label
+              input(type='radio', name='radio', value=''+(i+1) )
+              | Option #{i+1}
+          label
+            input(type='radio', name='radio', value='4', checked)
+            | Checked
+        input(disabled, placeholder='*disabled')
+        button button
+        
+      .DIV_XZ.col   
+        .flex-row.form-line
+          input.col(placeholder='Input width 1/2')
+          input.col(placeholder='Input width 1/2') 
+        .flex-row.form-line
+          .col(style="flex-basis: 210px;align-self:center")
+            each _,i in Array(3)
+              label
+                input(type='radio', name='radio', value=''+(i+1) )
+                | Option #{i+1}
+            label
+              input(type='radio', name='radio', value='4', checked)
+              | Checked
+
+          input.col(placeholder='Input') 
+        .flex-row.form-line
+          input.col.w_1-4(placeholder='Input width 1/4')
+          input.col.w_1-2(placeholder='Input width 1/2') 
+          input.col.w_1-4(placeholder='Input width 1/4') 
+        .flex-row.form-line
+          input.col.w_3-4(placeholder='Input width 3/4')
+          div
+            button base button
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
   fieldset
     legend Autocomplete
     my-autocomplete
@@ -56,14 +127,13 @@
 
   hr.H1
   //Text
-  samp
-    i.tag h1
+  .Tag h1
   h1 Lorem ipsum dolor sit amet consectetur
-  i.tag h2
+  .Tag h2
   h2 Lorem ipsum dolor sit amet consectetur
-  i.tag h3 
+  .Tag h3 
   h3 Lorem ipsum dolor sit amet consectetur
-  i.tag p
+  .Tag p
   p Lorem ipsum dolor <b>sit amet consectetur</b>, adipisicing elit. Blanditiis explicabo porro, <s>voluptatum laborum</s> cumque molestiae quibusdam accusamus sed, quam sint ducimus libero distinctio? Dolore laborum, quos dolorem recusandae deleniti quasi.
   p Lorem ipsum dolor sit, amet consectetur 
     a(href = '#') adipisicing
@@ -71,7 +141,7 @@
     a(href = '#') pariatur recusandae fugiat possimus 
     | commodi accusamus numquam, aliquam veniam saepe accusantium nostrum? Pariatur?
 
-  i.tag ul.textList
+  .Tag ul.textList
   ul.textList
     each item in [1,2,3]
       li Lorem ipsum dolor sit amet consectetur
@@ -98,7 +168,7 @@
           li Quam sint ducimus libero distinctio
     li Blanditiis explicabo porro, voluptatum laborum cumque molestiae quibusdam accusamus sed, quam sint ducimus libero distinctio? Dolore laborum, quos dolorem recusandae deleniti quasi.
 
-  i.tag ol.textList
+  .Tag ol.textList
   ol.textList
     li Lorem ipsum dolor sit amet consectetur
     li Nested <b>[OL]</b> ordered list styled
@@ -120,8 +190,9 @@
 
   hr.H1
   h1 Модалки <b>!!!TODO</b>
-  each item,i in ['Modal', 'Modal(toCenter)', 'Small Modal', 'Small(toCenter)', 'Large Modal', 'Right Modal']
-    button.btn.-blue(@click="showModal_"+(i+1)+" = true") #{item}
+  .form-line
+    each item,i in ['Modal', 'Modal(toCenter)', 'Small Modal', 'Small(toCenter)', 'Large Modal', 'Right Modal']
+      button.btn.-blue(@click="showModal_"+(i+1)+" = true") #{item}
 
   my-modal(:show.sync="showModal_1", title="Base Modal")
     p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis explicabo porro, voluptatum laborum cumque molestiae quibusdam accusamus sed, quam sint ducimus libero distinctio? Dolore laborum, quos dolorem recusandae deleniti quasi.
@@ -204,10 +275,8 @@ export default {
 <style lang="stylus">
 @import '../assets/settings';
 
-.Wrap {
-  padding: 1em;
-  margin: auto;
-  max-width: 1200px;
-}
+
+
+
 </style>
 

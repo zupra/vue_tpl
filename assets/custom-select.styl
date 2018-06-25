@@ -1,0 +1,29 @@
+.custom-select
+  user-select none  
+  cursor pointer
+
+  display: inline-block
+  position relative
+  
+  ul
+    position absolute
+    background #FFF
+    width 100%
+    box-shadow 0 .2em 1.4em 0 rgba(0, 0, 0, 0.2)
+  li
+    // as input
+    padding 0 1em
+    line-height: 2.4
+    height 2.4em
+    //list-style none
+    cursor pointer
+    color #477dca
+    border-top 1px solid #EFEFEF
+    white-space nowrap
+    &.selected
+      color #000
+    &:hover
+      background #f9f9f9
+    &.highlight
+      color: #000;
+      background: #f9f9f9;

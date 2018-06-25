@@ -1,17 +1,18 @@
 <template lang="pug">
 
-  .DIV
+  .custom-select
     p Выбрать город РФ
     pre {{selected}}
     input.Serch(
       v-model="keyword",
       @keyup.delete="selected.city?selected={}:''",
+      @blur=""
       @keydown.down='moveDown', 
       @keydown.up='moveUp',
       @keydown.enter='onSelect(filteredItems[highlight])',
       @input="onInput($event.target.value)")
     p(v-show="!test", style="color:red") Кирилицей !
-    ul.filteredItems(
+    ul(
       v-show="keyword && !selected.city")
       li(
         v-for="(item,i) in filteredItems", 
@@ -96,32 +97,6 @@ export default {
 <style lang="stylus">
 @import '../assets/settings';
 
-.DIV {
-  margin: 1em;
-  display: inline-block;
-  position: relative;
-}
+//@import 'custom-select'
 
-// UL
-.filteredItems {
-  position: absolute;
-  margin-top: -1em; // !FIXME
-  width: 100%;
-  background: #FFF;
-  box-shadow: 0 0.2em 1.4em 0 rgba(0, 0, 0, 0.2);
-
-  li {
-    padding: 0.5em;
-    padding-left: 1em;
-    cursor: pointer;
-    list-style: none;
-    color: #477dca;
-    border-top: 1px solid #EFEFEF;
-
-    &.highlight {
-      color: #000;
-      background: #f9f9f9;
-    }
-  }
-}
 </style>
