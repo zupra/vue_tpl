@@ -1,21 +1,26 @@
 ul,ol
   list-style none
 .textList
-  padding 1em 0 1em 1.4em
+  padding .7em 0 1em 1em
   //list-style-position inside
-  li:before
-    margin-right: .5em
-    font-weight: bold
-    color #000
+  line-height: 1.2
+  li
+    padding-top: .4em
+    &:before
+      margin-right: .5em
+      font-weight: bold
+      color #000
     //font-style: italic
   ol, ul
-    padding-left 1em
+    padding-left .5em
 
 
 
 numCounter()
   font-size: .9em
   content: counters(item, ".") ".";
+
+
 ul.textList
   li:before
     content: '▪ ' //'●' '■'

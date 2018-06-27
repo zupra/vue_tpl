@@ -128,11 +128,15 @@
   hr.H1
   //Text
   .Tag h1
-  h1 Lorem ipsum dolor sit amet consectetur
+  h1 Lorem ipsum dolor sit amet quos dolorem recusandae deleniti quasi
   .Tag h2
-  h2 Lorem ipsum dolor sit amet consectetur
+  h2 Lorem ipsum dolor sit amet quos dolorem recusandae deleniti quasi
   .Tag h3 
-  h3 Lorem ipsum dolor sit amet consectetur
+  h3 Lorem ipsum dolor sit amet quos dolorem recusandae deleniti quasi
+  .Tag h4 
+  h4 Lorem ipsum dolor sit amet quos dolorem recusandae deleniti quasi
+  .Tag h5
+  h5 Lorem ipsum dolor sit amet quos dolorem recusandae deleniti quasi
   .Tag p
   p Lorem ipsum dolor <b>sit amet consectetur</b>, adipisicing elit. Blanditiis explicabo porro, <s>voluptatum laborum</s> cumque molestiae quibusdam accusamus sed, quam sint ducimus libero distinctio? Dolore laborum, quos dolorem recusandae deleniti quasi.
   p Lorem ipsum dolor sit, amet consectetur 
