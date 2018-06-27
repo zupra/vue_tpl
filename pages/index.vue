@@ -6,6 +6,8 @@
     .form-line
       button base button
       button(disabled) button disabled
+      input(type="reset", value="reset")
+      input(type="submit", value="submit")
     .Tag states/mod
     .form-line
       each styl in ['btn lite','btn red','btn green','btn orange','btn']
@@ -48,6 +50,12 @@
       input(value='Read-only value', readonly)
       input(placeholder='*Required')
       input(disabled, placeholder='*disabled')
+
+    .Tag 'color','date','datetime','datetime-local','email','number','range','search','tel','time','url','month','week'
+    .form-line
+      each type in ['color','date','datetime','datetime-local','email','number','range','search','tel','time','url','month','week']
+        label=type
+          input(type=""+type)
 
     .Tag c-select
     my-select(:options="options", @option="selectedOption = $event")

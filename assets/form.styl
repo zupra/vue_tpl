@@ -58,23 +58,30 @@ select:not([multiple]):-moz-focusring
 
 
 //BASE_el
-button, input, select, textarea
+button, select, textarea, 
+input:not([type=color]):not([type=range])
+  appearance: none
   outline: 0
+
   box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
   font: inherit
 
 $base_form_el_size()
   line-height 1.2
   padding .6em 1em
-.select, select:not([multiple]), input, textarea, .btn, button
+.select, select:not([multiple]), 
+textarea, 
+.btn, button, 
+input:not([type=color]):not([type=range]):not([type=radio]):not([type=checkbox])
   $base_form_el_size()
   border-radius .3em
 
 
 // Input_el
-.select, select, input, textarea
+.select, select, textarea, 
+input:not([type=color]):not([type=range]):not([type=radio]):not([type=checkbox])
   border: 1px solid $border-input
-  &:focus
+  &:focus:not([type=reset]):not([type=submit])
     border-radius: 0
     border-top-color: $link 
 
@@ -85,8 +92,8 @@ $select()
   background #fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='12'><polygon points='0,0 12,0 6,12' fill='orange'/></svg>") 100% no-repeat;
   padding-right 2em //for icon
 
-select:not([multiple])
-  appearance: none
+// select:not([multiple])
+//   appearance: none
 select:not([multiple]), .select
   $select()
 select[multiple]
