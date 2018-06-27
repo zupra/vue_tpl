@@ -53,7 +53,8 @@
 
     .Tag 'color','date','datetime','datetime-local','email','number','range','search','tel','time','url','month','week'
     .form-line
-      each type in ['color','date','datetime','datetime-local','email','number','range','search','tel','time','url','month','week']
+      input(type='color' pattern="#[a-f0-9]{6}" title="hexadecimal color" placeholder="#000000")
+      each type in ['color','date','datetime','datetime-local','email','number','range','search','tel','time','url','month','week', 'file','password']
         label=type
           input(type=""+type)
 

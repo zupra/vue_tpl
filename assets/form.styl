@@ -56,10 +56,23 @@ select:not([multiple]):-moz-focusring
   text-shadow: 0 0 0 #000;
 
 
+input[type=color]
+  height: 3em;
+  vertical-align: middle;
+  background: transparent;
+  border: 0;
+
+
+
+
+
+
+
+
 
 //BASE_el
 button, select, textarea, 
-input:not([type=color]):not([type=range])
+input:not([type=range])//:not([type=color])
   appearance: none
   outline: 0
 
