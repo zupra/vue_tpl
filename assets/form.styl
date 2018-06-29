@@ -22,6 +22,7 @@
 
  // !TODO
 .form-line
+  user-select none
   margin -.3em
   &+&
     margin-top .7em
@@ -119,8 +120,8 @@ select[multiple]
       background #EFEFEF
 
 
-.Serch
-  padding-left 2.4em  
+.Search
+  padding-left: 2.4em !important;
   background url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='13' height='13'><g stroke-width='2' stroke='blueviolet'><circle cx='5' cy='5'  r='4' style='fill:none;' /><line x1='9' y1='9' x2='13' y2='13' /></g></svg>") 1em 50% no-repeat
 
 
@@ -128,13 +129,16 @@ select[multiple]
 
 //@import 'form_button'
 //https://bulma.io/documentation/elements/button/#button-group
-// [type="reset"]
-// [type="submit"]
+
 button
   border 0
 .btn
   display: inline-block
   text-decoration: none  
+
+
+[type="reset"]
+[type="submit"]
 button
 .btn
   //border-radius: .3em
